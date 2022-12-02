@@ -58,9 +58,18 @@ ORDER BY gross_revenue DESC
 LIMIT 5;
 
 -- 6. Is "Academy Dinosaur" available for rent from Store 1?
-
+SELECT i.store_id, f.title, i.inventory_id
+FROM film f
+JOIN inventory i 
+USING (film_id)
+WHERE f.title = 'Academy Dinosaur' AND i.store_id = 1;
 
 -- 7. Get all pairs of actors that worked together.
-
+SELECT fa.film_id, f.title, a.first_name, a.last_name
+FROM actor a
+RIGHT JOIN film_actor fa 
+USING(actor_id)
+JOIN film f 
+USING(film_id);
 
 
